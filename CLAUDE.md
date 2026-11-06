@@ -3,12 +3,12 @@
 ## 概要
 就活生向けのキャリア診断Webアプリのバックエンド。
 価値観の質問への回答から、職種データ（スペシャリスト／テックリード／PM／EM／CTO／起業）との
-マッチ度をClaudeで診断し、結果カードとオリジナルキャラクター画像を生成する。
+マッチ度をGeminiで診断し、結果カードとオリジナルキャラクター画像を生成する。
 目的はポートフォリオ兼、クラウド（Google Cloud）の実務経験を積むこと。
 
 ## 技術スタック
 - バックエンド：Python 3.12 / FastAPI / Cloud Run
-- 生成AI（文章）：Claude（Anthropic API、Tool Useで構造化出力）
+- 生成AI（文章）：Gemini API（Google AI Studio の無料枠、google-genai SDK、構造化出力）
 - 生成AI（画像）：Gemini（Vertex AI、google-genai SDK）※ステップ4
 - DB：Firestore（ステップ3）／ストレージ：Cloud Storage（ステップ4）
 - 運用：Secret Manager / IAM / GitHub Actions（ステップ5）/ Terraform（ステップ6、任意）
@@ -25,7 +25,7 @@
 
 ## ロードマップ
 1. 最小のFastAPI（/health）をCloud Runに公開
-2. Secret Manager + Claudeで診断API（/careers, /diagnose）
+2. Secret Manager + Geminiで診断API（/careers, /diagnose）
 3. Firestoreに職種データと診断結果を保存、共有URL発行、CORS設定
 4. Gemini画像生成 + Cloud Storage、OGP
 5. GitHub Actionsで自動デプロイ
